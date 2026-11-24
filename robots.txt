@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xn--nsteskridt-d6a.dk/sitemap.xml
