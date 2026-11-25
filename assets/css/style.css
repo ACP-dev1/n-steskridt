@@ -30,7 +30,7 @@
   --gutter: clamp(1.25rem, 4vw, 3rem);
   --section: clamp(4.5rem, 3rem + 5vw, 8rem);
   --gap: clamp(1.5rem, 4vw, 4rem);  /* fælles kolonneafstand: alle kolonner deler samme linjer */
-  --header-h: 5rem;
+  --header-h: 6rem;
   --ease: cubic-bezier(.2, .7, .2, 1);
   color-scheme: light;
   accent-color: var(--accent);
@@ -95,6 +95,12 @@ section[id], li[id] { scroll-margin-top: calc(var(--header-h) + 1.5rem); }
 .site-header__inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; min-height: var(--header-h); }
 .logo { display: inline-flex; color: inherit; }
 .logo svg, .logo img { display: block; height: 2.25rem; width: auto; }
+/* Logo med "Fra viden til handling": fra 40rem i sidehovedet og altid i sidefoden.
+   Under 40rem bliver taglinen for lille, så sidehovedet viser kun ordmærket (<picture>). */
+.site-header .logo__img { height: 4.25rem; }
+@media (min-width: 64.0625rem) { :root { --header-h: 6.75rem; } .site-header .logo__img { height: 5.25rem; } }
+@media (max-width: 40rem) { .site-header .logo__img { height: 2.25rem; } }
+.footer__brand .logo img { width: 18rem; max-width: 100%; height: auto; }
 .logo__step { fill: var(--accent); }
 .nav ul { list-style: none; display: flex; align-items: center; gap: clamp(1.25rem, 2.2vw, 2.25rem); }
 .nav a:not(.btn) { display: inline-flex; align-items: center; min-height: 2.75rem; font-size: var(--t-small); font-weight: 500; text-decoration: none; }
@@ -119,7 +125,7 @@ section[id], li[id] { scroll-margin-top: calc(var(--header-h) + 1.5rem); }
   .nav__contact { display: flex; flex-direction: column; gap: .35rem; font-size: 1.125rem; }
   .menu-open { overflow: hidden; }
 }
-@media (max-width: 24rem) { .site-header__inner { gap: .75rem; } .logo svg { height: 1.85rem; } .menu-btn { padding: 0 .7rem; } }
+@media (max-width: 24rem) { .site-header__inner { gap: .75rem; } .site-header .logo__img { height: 1.85rem; } .menu-btn { padding: 0 .7rem; } }
 @media (min-width: 64.0625rem) { .nav__contact { display: none; } }
 /* Uden JavaScript: menuen brydes under logoet i stedet for at løbe ud over kanten */
 @media (max-width: 64rem) {
@@ -309,3 +315,5 @@ section[id], li[id] { scroll-margin-top: calc(var(--header-h) + 1.5rem); }
 @media (max-width: 34rem) { .footer__grid { grid-template-columns: minmax(0, 1fr); } }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; } }
+
+@media (max-width: 40rem) { :root { --header-h: 4.5rem; } }
